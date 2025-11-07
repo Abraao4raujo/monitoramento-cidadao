@@ -37,8 +37,8 @@ export default function RelatarPage() {
 
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-secondary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Shield className="h-10 w-10 text-secondary" />
+            <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Shield className="h-10 w-10 text-primary" />
             </div>
             <h1 className="text-3xl font-bold mb-4">Relato Enviado com Sucesso</h1>
             <p className="text-lg text-muted-foreground mb-8">
@@ -47,9 +47,9 @@ export default function RelatarPage() {
             </p>
             <div className="flex gap-4 justify-center">
               <Link href="/">
-                <Button variant="outline">Voltar ao Início</Button>
+                <Button variant="outline" className="cursor-pointer">Voltar ao Início</Button>
               </Link>
-              <Button onClick={() => setSubmitted(false)} className="bg-secondary hover:bg-secondary/90">
+              <Button onClick={() => setSubmitted(false)} className="bg-primary hover:bg-primary/90 cursor-pointer">
                 Fazer Outro Relato
               </Button>
             </div>
@@ -76,7 +76,7 @@ export default function RelatarPage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-primary/90 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="h-8 w-8 text-secondary" />
             </div>
             <h1 className="text-4xl font-bold mb-4">Relatar Ocorrência</h1>
@@ -187,7 +187,7 @@ export default function RelatarPage() {
                 </div>
 
                 <div className="pt-4">
-                  <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90" size="lg">
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 cursor-pointer" size="lg">
                     <Lock className="h-4 w-4 mr-2" />
                     Enviar Relato Anônimo
                   </Button>

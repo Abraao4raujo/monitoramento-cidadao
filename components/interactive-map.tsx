@@ -1,22 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Search, ZoomIn, ZoomOut, Layers } from "lucide-react"
 
 export default function InteractiveMap() {
-  const [selectedFilter, setSelectedFilter] = useState("todos")
-
-  const filters = [
-    { id: "todos", label: "Todos", count: 1247 },
-    { id: "homicidios", label: "Homicídios", count: 89 },
-    { id: "roubos", label: "Roubos", count: 456 },
-    { id: "furtos", label: "Furtos", count: 523 },
-    { id: "feminicidios", label: "Feminicídios", count: 12 },
-    { id: "outros", label: "Outros", count: 167 },
-  ]
 
   const neighborhoods = [
     { name: "Pajuçara", incidents: 89, x: 45, y: 35, severity: "high" },
@@ -32,13 +18,13 @@ export default function InteractiveMap() {
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case "critical":
-        return "bg-destructive"
+        return "bg-red-500"
       case "high":
-        return "bg-accent"
+        return "bg-orange-500"
       case "medium":
-        return "bg-primary"
+        return "bg-yellow-500"
       default:
-        return "bg-secondary"
+        return "bg-blue-500"
     }
   }
 
@@ -51,40 +37,18 @@ export default function InteractiveMap() {
 
   return (
     <div className="space-y-6">
-      {/* Filters */}
-      <Card className="bg-card border-border">
-        <CardContent className="pt-6">
-          <div className="flex flex-wrap gap-2">
-            {filters.map((filter) => (
-              <Button
-                key={filter.id}
-                variant={selectedFilter === filter.id ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedFilter(filter.id)}
-                className={selectedFilter === filter.id ? "bg-primary" : ""}
-              >
-                {filter.label}
-                <Badge variant="secondary" className="ml-2">
-                  {filter.count}
-                </Badge>
-              </Button>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
       {/* Map Container */}
-      <Card className="bg-card border-border overflow-hidden">
+      <Card>
         <CardContent className="p-0">
-          <div className="relative bg-muted/20 aspect-[16/10] overflow-hidden">
+          <div className="relative bg-slate-100 w-full h-[600px] overflow-hidden">
             {/* Map Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-muted/40 to-muted/10">
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-50">
               {/* Grid overlay */}
               <div
-                className="absolute inset-0 opacity-10"
+                className="absolute inset-0 opacity-20"
                 style={{
                   backgroundImage:
-                    "linear-gradient(rgb(var(--color-border)) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--color-border)) 1px, transparent 1px)",
+                    "linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px)",
                   backgroundSize: "50px 50px",
                 }}
               />
@@ -102,48 +66,32 @@ export default function InteractiveMap() {
                 >
                   <span className="text-xs font-bold text-white">{neighborhood.incidents}</span>
                 </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-card border border-border rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
                   <p className="text-sm font-semibold">{neighborhood.name}</p>
-                  <p className="text-xs text-muted-foreground">{neighborhood.incidents} ocorrências</p>
+                  <p className="text-xs text-gray-600">{neighborhood.incidents} ocorrências</p>
                 </div>
               </div>
             ))}
 
-            {/* Map Controls */}
-            <div className="absolute top-4 right-4 flex flex-col gap-2">
-              <Button size="icon" variant="secondary" className="bg-card border border-border">
-                <Search className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="secondary" className="bg-card border border-border">
-                <ZoomIn className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="secondary" className="bg-card border border-border">
-                <ZoomOut className="h-4 w-4" />
-              </Button>
-              <Button size="icon" variant="secondary" className="bg-card border border-border">
-                <Layers className="h-4 w-4" />
-              </Button>
-            </div>
-
             {/* Legend */}
-            <div className="absolute bottom-4 left-4 bg-card border border-border rounded-lg p-4 shadow-xl">
+            <div className="absolute bottom-4 left-4 bg-white border border-gray-200 rounded-lg p-4 shadow-xl">
               <h4 className="text-sm font-semibold mb-3">Nível de Ocorrências</h4>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-destructive"></div>
-                  <span className="text-xs text-muted-foreground">Crítico (200+)</span>
+                  <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                  <span className="text-xs text-gray-600">Crítico (200+)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-accent"></div>
-                  <span className="text-xs text-muted-foreground">Alto (100-200)</span>
+                  <div className="w-4 h-4 rounded-full bg-orange-500"></div>
+                  <span className="text-xs text-gray-600">Alto (100-200)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-primary"></div>
-                  <span className="text-xs text-muted-foreground">Médio (50-100)</span>
+                  <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
+                  <span className="text-xs text-gray-600">Médio (50-100)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-secondary"></div>
-                  <span className="text-xs text-muted-foreground">Baixo (&lt;50)</span>
+                  <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                  <span className="text-xs text-gray-600">Baixo (&lt;50)</span>
                 </div>
               </div>
             </div>

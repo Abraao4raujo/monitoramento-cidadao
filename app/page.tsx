@@ -1,9 +1,9 @@
-import { Shield, AlertTriangle, Users, TrendingDown, MapPin } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
 import InteractiveMap from "@/components/interactive-map"
 import StatsOverview from "@/components/stats-overview"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertTriangle, MapPin, Shield, TrendingDown, Users } from "lucide-react"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -37,7 +37,7 @@ export default function HomePage() {
                 Comunidade
               </Link>
               <Link href="/relatar">
-                <Button className="bg-primary hover:bg-primary/90">
+                <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
                   <AlertTriangle className="h-4 w-4 mr-2" />
                   Relatar Ocorrência
                 </Button>
@@ -82,7 +82,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <Link href="/relatar">
-                <Button className="w-full bg-primary hover:bg-primary/90">Fazer Relato</Button>
+                <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">Fazer Relato</Button>
               </Link>
             </CardContent>
           </Card>
@@ -97,7 +97,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <Link href="/dados">
-                <Button variant="outline" className="w-full bg-transparent">
+                <Button variant="outline" className="w-full bg-transparent cursor-pointer">
                   Ver Estatísticas
                 </Button>
               </Link>
@@ -114,7 +114,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <Link href="/comunidade">
-                <Button variant="outline" className="w-full bg-transparent">
+                <Button variant="outline" className="w-full bg-transparent cursor-pointer">
                   Saiba Mais
                 </Button>
               </Link>
@@ -138,7 +138,7 @@ export default function HomePage() {
             <Card key={i} className="bg-card border-border">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-accent/10 p-2 rounded-lg">
+                  <div className="bg-primary/90 p-2 rounded-lg">
                     <MapPin className="h-5 w-5 text-accent" />
                   </div>
                   <div className="flex-1">

@@ -20,7 +20,7 @@ export default function ComunidadePage() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-primary/90 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="h-8 w-8 text-secondary" />
             </div>
             <h1 className="text-4xl font-bold mb-4">Comunidade e Oficinas</h1>
